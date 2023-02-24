@@ -14,11 +14,12 @@ return new class extends Migration
         Schema::create('clients', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('type');
+            $table->enum('type', ['PF','PJ'])->nullable();
+            $table->string('cpf_cnpj')->unique();
             $table->boolean('active');
-            $table->string('phone');
             $table->string('cellphone');
             $table->string('email');
+            $table->text('veiculo')->nullable();
             $table->timestamps();
         });
     }
