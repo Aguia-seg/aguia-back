@@ -15,6 +15,11 @@ class Client extends Model
         'active',
         'cellphone',
         'email',
-        'veiculo'
+        'town',
+        'neighborhood',
+        'street',
+        'complement',
+        'number',
+        'veicle',
     ];
 }
