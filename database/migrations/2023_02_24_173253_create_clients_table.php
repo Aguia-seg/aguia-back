@@ -19,7 +19,12 @@ return new class extends Migration
             $table->boolean('active');
             $table->string('cellphone');
             $table->string('email');
-            $table->text('veiculo')->nullable();
+            $table->string('town');
+            $table->string('neighborhood');
+            $table->string('street');
+            $table->string('complement');
+            $table->string('number');
+            $table->text('veicle')->nullable();
             $table->timestamps();
         });
     }
