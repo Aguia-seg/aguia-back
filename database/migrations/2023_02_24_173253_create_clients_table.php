@@ -19,8 +19,8 @@ return new class extends Migration
             $table->boolean('active');
             $table->string('cellphone');
             $table->string('email');
-            $table->string('town');
-            $table->string('neighborhood');
+            $table->string('city');
+            $table->string('district');
             $table->string('street');
             $table->string('complement');
             $table->string('number');
