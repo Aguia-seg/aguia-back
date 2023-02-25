@@ -17,7 +17,7 @@ return new class extends Migration
             $table->enum('type', ['PF','PJ'])->nullable();
             $table->string('cpf_cnpj')->unique();
             $table->boolean('active');
-            $table->string('cellphone');
+            $table->string('phone');
             $table->string('email');
             $table->string('city');
             $table->string('district');

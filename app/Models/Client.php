@@ -13,7 +13,7 @@ class Client extends Model
         'type',
         'cpf_cnpj',
         'active',
-        'cellphone',
+        'phone',
         'email',
         'city',
         'district',
