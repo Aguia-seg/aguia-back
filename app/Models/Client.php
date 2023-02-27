@@ -15,6 +15,7 @@ class Client extends Model
         'active',
         'phone',
         'email',
+        'cep',
         'city',
         'district',
         'street',
