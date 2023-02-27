@@ -14,8 +14,8 @@ return new class extends Migration
         Schema::create('plans', function (Blueprint $table) {
             $table->id();
             $table->string('description');
-            $table->string('value');
-            $table->string('status');
+            $table->float('value');
+            $table->boolean('status')->default(1);
             $table->timestamps();
         });
     }
