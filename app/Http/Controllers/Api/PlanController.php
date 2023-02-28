@@ -14,7 +14,10 @@ class PlanController extends Controller
      */
     public function index(): Response
     {
-        
+        $plans = Plan::all();
+        return response(
+            $plans,
+        );
     }
 
     /**
