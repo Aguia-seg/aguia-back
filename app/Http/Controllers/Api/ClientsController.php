@@ -38,7 +38,10 @@ class ClientsController extends Controller
      */
     public function show(string $id): Response
     {
-        //
+        $client = Client::find($id);
+        return response(
+            $client,
+        );
     }
 
     /**
