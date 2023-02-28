@@ -3,9 +3,9 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Models\Plan;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
-use App\Models\Plan;
 
 class PlanController extends Controller
 {
@@ -16,7 +16,7 @@ class PlanController extends Controller
     {
         $plans = Plan::all();
         return response(
-            $plans,
+            $plans
         );
     }
 
@@ -25,8 +25,13 @@ class PlanController extends Controller
      */
     public function store(Request $request): Response
     {
-        //
+        $plan = Plan::create($request->all());
+
+        return response([
+            'message'=> 'Plano cadastrado com sucesso'
+        ]);
     }
+    
 
     /**
      * Display the specified resource.
