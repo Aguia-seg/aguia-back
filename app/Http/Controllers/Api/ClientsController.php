@@ -50,10 +50,9 @@ class ClientsController extends Controller
     {
         $client = Client::find($id);
         $client->contracts;
-        return response([
+        return response(
             $client,
             // 'contracts' => $client->contracts
-        ]
         );
     }
 
