@@ -4,16 +4,14 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
-class Plan extends Model
+class Contract extends Model
 {
-    use HasFactory;
+    use HasFactory; 
     protected $fillable = [
-        'description',
-        'value',
-        'status',
+        'client_id',
+        'plan_id',
+        'expiration',
+        'payday',
     ];
-
-
 }

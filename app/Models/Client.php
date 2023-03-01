@@ -4,6 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+
 
 class Client extends Model
 {
@@ -23,4 +25,10 @@ class Client extends Model
         'number',
         'veicle',
     ];
+
+    
+    public function contracts(): BelongsToMany
+    {
+        return $this->belongsToMany(Contract::class, 'contracts', 'client_id');
+    }
 }

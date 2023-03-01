@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use App\Models\Client;
+use App\Models\Contract;
 
 class ClientsController extends Controller
 {
@@ -28,6 +29,15 @@ class ClientsController extends Controller
     {
         $client = Client::create($request->all());
 
+        if($client){
+        $contract = Contract::create([
+            'client_id'=> $client->id,
+            'plan_id' => $request->plan_id,
+            'expiration'=> $request->expiration,
+            'payday'=> $request->payday
+        ]);
+    };
+
         return response([
             'message'=> 'Cliente cadastrado com sucesso'
         ]);
@@ -39,8 +49,10 @@ class ClientsController extends Controller
     public function show(string $id): Response
     {
         $client = Client::find($id);
-        return response(
+        return response([
             $client,
+            'contracts' => $client->contracts
+        ]
         );
     }
 
