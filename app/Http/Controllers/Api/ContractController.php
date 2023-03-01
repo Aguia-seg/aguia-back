@@ -5,42 +5,23 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
-use App\Models\Client;
-use App\Models\Contract;
 
-class ClientsController extends Controller
+class ContractController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index(): Response
     {
-        $clients = Client::all();
-        return response(
-            $clients,
-        );
+        //
     }
-    
 
     /**
      * Store a newly created resource in storage.
      */
     public function store(Request $request): Response
     {
-        $client = Client::create($request->all());
-
-        if($client){
-        $contract = Contract::create([
-            'client_id'=> $client->id,
-            'plan_id' => $request->plan_id,
-            'expiration'=> $request->expiration,
-            'payday'=> $request->payday
-        ]);
-    };
-
-        return response([
-            'message'=> 'Cliente cadastrado com sucesso'
-        ]);
+        //
     }
 
     /**
@@ -48,13 +29,7 @@ class ClientsController extends Controller
      */
     public function show(string $id): Response
     {
-        $client = Client::find($id);
-        $client->contracts;
-        return response([
-            $client,
-            // 'contracts' => $client->contracts
-        ]
-        );
+        //
     }
 
     /**
