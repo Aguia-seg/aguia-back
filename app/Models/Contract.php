@@ -14,6 +14,8 @@ class Contract extends Model
         'plan_id',
         'expiration',
         'payday',
+        'value',
+        'off',
     ];
 
     public function plan() : BelongsTo
