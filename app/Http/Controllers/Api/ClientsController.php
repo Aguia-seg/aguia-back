@@ -32,10 +32,10 @@ class ClientsController extends Controller
         if($client){
         $contract = Contract::create([
             'client_id'=> $client->id,
-            'plan_id' => $request->plan_id,
+            'plan_id' => $request->plano['id'],
             'expiration'=> $request->expiration,
             'payday'=> $request->payday,
-            'value' => $request->value
+            'value' => $request->plano['value']
         ]);
     };
 
