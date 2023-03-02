@@ -48,8 +48,7 @@ class ClientsController extends Controller
      */
     public function show(string $id): Response
     {
-        $client = Client::find($id);
-        $client->contracts;
+        $client = Client::getContract()->where('id', $id)->first();
         return response(
             $client,
             // 'contracts' => $client->contracts

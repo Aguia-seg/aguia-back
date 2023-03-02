@@ -31,4 +31,12 @@ class Client extends Model
     {
         return $this->hasMany(Contract::class, 'client_id');
     }
+
+    function scopeGetContract($query) 
+    {
+        return $query->with([
+            'contracts.plan', 
+
+        ]);
+    }
 }
