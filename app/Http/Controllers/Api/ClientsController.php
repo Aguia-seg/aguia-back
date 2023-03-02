@@ -34,7 +34,8 @@ class ClientsController extends Controller
             'client_id'=> $client->id,
             'plan_id' => $request->plan_id,
             'expiration'=> $request->expiration,
-            'payday'=> $request->payday
+            'payday'=> $request->payday,
+            'value' => $request->value
         ]);
     };
 

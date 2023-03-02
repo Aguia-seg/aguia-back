@@ -18,7 +18,7 @@ return new class extends Migration
             $table->date('expiration');
             $table->integer('payday');
             $table->float('value');
-            $table->integer('off');
+            $table->integer('off')->default(0);
             $table->timestamps();
         });
     }
