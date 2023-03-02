@@ -11,14 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('contracts', function (Blueprint $table) {
+        Schema::create('invoices', function (Blueprint $table) {
             $table->id();
             $table->foreignId('client_id')->constrained();
-            $table->foreignId('plan_id')->constrained();
+            $table->foreignId('contract_id')->constrained();
             $table->date('expiration');
-            $table->integer('payday');
             $table->float('value');
             $table->integer('off');
+            $table->enum('type', ['payed', 'delayed', 'pending', 'canceled']);
             $table->timestamps();
         });
     }
@@ -28,6 +28,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('contracts');
+        Schema::dropIfExists('invoices');
     }
 };
