@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\{hasMany, BelongsTo, hasOne};
+use Carbon\Carbon;
 
 class Contract extends Model
 {
@@ -18,8 +19,14 @@ class Contract extends Model
         'off',
     ];
 
+    protected $casts = [
+        'expiration' => 'datetime:d/m/Y',
+    ];
+
     public function plan() : BelongsTo
     {
         return $this->belongsTo(Plan::class, 'plan_id');
     }
+
+    
 }
