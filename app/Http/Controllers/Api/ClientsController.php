@@ -29,14 +29,14 @@ class ClientsController extends Controller
     {
         $client = Client::create($request->all());
 
-        if($client){
-        $contract = Contract::create([
-            'client_id'=> $client->id,
-            'plan_id' => $request->plano['id'],
-            'expiration'=> $request->expiration,
-            'payday'=> $request->payday,
-            'value' => $request->plano['value']
-        ]);
+        // if($client){
+        // $contract = Contract::create([
+        //     'client_id'=> $client->id,
+        //     'plan_id' => $request->plano['id'],
+        //     'expiration'=> $request->expiration,
+        //     'payday'=> $request->payday,
+        //     'value' => $request->plano['value']
+        // ]);
     };
 
         return response([
