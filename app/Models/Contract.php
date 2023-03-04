@@ -5,7 +5,6 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\{hasMany, BelongsTo, hasOne};
-use Carbon\Carbon;
 
 class Contract extends Model
 {
@@ -27,6 +26,5 @@ class Contract extends Model
     {
         return $this->belongsTo(Plan::class, 'plan_id');
     }
-
     
 }
