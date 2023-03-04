@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use App\Models\Client;
 use App\Models\Contract;
+use Illuminate\Support\Carbon;
 
 class ClientsController extends Controller
 {
@@ -20,7 +21,7 @@ class ClientsController extends Controller
             $clients,
         );
     }
-    
+
 
     /**
      * Store a newly created resource in storage.
@@ -29,19 +30,19 @@ class ClientsController extends Controller
     {
         $client = Client::create($request->all());
 
-        // if($client){
-        // $contract = Contract::create([
-        //     'client_id'=> $client->id,
-        //     'plan_id' => $request->plano['id'],
-        //     'expiration'=> $request->expiration,
-        //     'payday'=> $request->payday,
-        //     'value' => $request->plano['value']
-        // ]);
+        if ($client) {
+            $contract = Contract::create([
+                'client_id' => $client->id,
+                'plan_id' => $request->plano['id'],
+                'expiration' => Carbon::create(null, 12, $request->payday),
+                'payday' => $request->payday,
+                'value' => $request->plano['value']
+            ]);
 
-         return response([
-            'message'=> 'Cliente cadastrado com sucesso'
-        ]);
-           
+            return response([
+                'message' => 'Cliente cadastrado com sucesso'
+            ]);
+        }
     }
 
     /**
