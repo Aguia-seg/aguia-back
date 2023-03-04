@@ -17,8 +17,8 @@ return new class extends Migration
             $table->foreignId('contract_id')->constrained();
             $table->date('expiration');
             $table->float('value');
-            $table->integer('off');
-            $table->enum('type', ['payed', 'delayed', 'pending', 'canceled']);
+            $table->integer('off')->default(0);
+            $table->enum('type', ['payed', 'delayed', 'pending', 'canceled'])->default('pending');
             $table->timestamps();
         });
     }

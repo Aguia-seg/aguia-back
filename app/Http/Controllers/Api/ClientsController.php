@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use App\Models\Client;
 use App\Models\Contract;
+use App\Models\Invoice;
 use Illuminate\Support\Carbon;
 
 class ClientsController extends Controller
@@ -38,6 +39,19 @@ class ClientsController extends Controller
                 'payday' => $request->payday,
                 'value' => $request->plano['value']
             ]);
+
+            if($contract){
+                $mes_atual = 3;
+                for ($i = $mes_atual; $i <= 12; $i++) { 
+                    $invoices = Invoice::create([
+                        'client_id' => $client->id,
+                        'contract_id' => $request->plano['id'],
+                        'expiration' => Carbon::create(null, $i, $request->payday),
+                        'value' => $request->plano['value']
+                    ]);
+                }              
+
+            }
 
             return response([
                 'message' => 'Cliente cadastrado com sucesso'

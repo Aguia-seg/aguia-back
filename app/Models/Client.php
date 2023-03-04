@@ -36,6 +36,7 @@ class Client extends Model
     {
         return $query->with([
             'contracts.plan', 
+            'contracts.invoices'
 
         ]);
     }

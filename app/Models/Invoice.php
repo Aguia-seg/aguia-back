@@ -16,4 +16,8 @@ class Invoice extends Model
         'off',
         'status',
     ];
+
+    protected $casts = [
+        'expiration' => 'datetime:d/m/Y',
+    ];
 }

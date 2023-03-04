@@ -27,4 +27,9 @@ class Contract extends Model
         return $this->belongsTo(Plan::class, 'plan_id');
     }
     
+    public function invoices() : hasMany
+    {
+        return $this->hasMany(invoice::class, 'contract_id');
+    }
+    
 }
