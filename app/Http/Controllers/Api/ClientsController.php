@@ -37,11 +37,11 @@ class ClientsController extends Controller
         //     'payday'=> $request->payday,
         //     'value' => $request->plano['value']
         // ]);
-    };
 
-        return response([
+         return response([
             'message'=> 'Cliente cadastrado com sucesso'
         ]);
+           
     }
 
     /**
