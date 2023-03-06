@@ -41,11 +41,12 @@ class ClientsController extends Controller
             ]);
 
             if($contract){
-                $mes_atual = 3;
+                $data_atual = Carbon::now();
+                $mes_atual = $data_atual->month;
                 for ($i = $mes_atual; $i <= 12; $i++) { 
                     $invoices = Invoice::create([
                         'client_id' => $client->id,
-                        'contract_id' => $request->plano['id'],
+                        'contract_id' => $contract->id,
                         'expiration' => Carbon::create(null, $i, $request->payday),
                         'value' => $request->plano['value']
                     ]);
@@ -71,6 +72,8 @@ class ClientsController extends Controller
         );
     }
 
+  
+
     /**
      * Update the specified resource in storage.
      */
@@ -85,5 +88,14 @@ class ClientsController extends Controller
     public function destroy(string $id): Response
     {
         //
+    }
+
+      public function search(Request $request): Response
+    {
+        $client = Client::where('name', 'LIKE',"%{$request->search}%" )->get();
+        return response(
+           $client,
+            // 'contracts' => $client->contracts
+        );
     }
 }
