@@ -6,7 +6,6 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreClientPost;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
-use Illuminate\Http\RedirectResponse;
 use App\Models\Client;
 use App\Models\Contract;
 use App\Models\Invoice;
@@ -30,7 +29,7 @@ class ClientsController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreClientPost $request): RedirectResponse
+    public function store(StoreClientPost $request): Response
     {
         // $messages = [
         //     'unique' => 'Já existe :attribute cadastrado.',
