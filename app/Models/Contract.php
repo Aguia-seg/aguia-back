@@ -29,7 +29,7 @@ class Contract extends Model
     
     public function invoices() : hasMany
     {
-        return $this->hasMany(invoice::class, 'contract_id');
+        return $this->hasMany(Invoice::class, 'contract_id');
     }
     
 }
