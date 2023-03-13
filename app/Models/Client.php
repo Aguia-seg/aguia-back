@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\hasMany;
+use illuminate\Support\Str;
 
 
 class Client extends Model
@@ -26,6 +27,15 @@ class Client extends Model
         'veicle',
     ];
 
+    // protected function phone(): Attribute
+    // {
+    //     return Attribute::get(fn ($value) => Str::substrReplace($value, '(', 1, 0));
+    // }
+
+    public function getPhoneAttribute($value){
+        return Str::substrReplace($value, '(', 0) . Str::substrReplace($value, ')', 2) . Str::substrReplace($value, '-', 5, 0);
+         
+    }
     
     public function contracts(): hasMany
     {
