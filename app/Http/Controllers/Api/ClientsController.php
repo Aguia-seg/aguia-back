@@ -92,7 +92,9 @@ class ClientsController extends Controller
 
       public function search(Request $request): Response
     {
-        $client = Client::where('name', 'LIKE',"%{$request->search}%" )->get();
+        $client = Client::where('name', 'LIKE',"%{$request->search}%" )
+        ->orWhere('cpf_cnpj','=',$request->search)
+        ->get();
         return response(
            $client,
             // 'contracts' => $client->contracts
