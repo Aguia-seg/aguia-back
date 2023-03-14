@@ -15,6 +15,8 @@ class Invoice extends Model
         'value',
         'off',
         'status',
+        'days',
+        'addition',
     ];
 
     protected $casts = [

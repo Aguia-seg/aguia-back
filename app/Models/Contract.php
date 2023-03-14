@@ -20,6 +20,7 @@ class Contract extends Model
 
     protected $casts = [
         'expiration' => 'datetime:d/m/Y',
+        'created_at' => 'datetime:d/m/Y',
     ];
 
     public function plan() : BelongsTo

@@ -23,14 +23,23 @@ class PainelController extends Controller
         ->whereDate('created_at', Carbon::now())
         ->count();
 
+        $clients_deactive = Client::where('active', 0)->count();
+
+        $clients_deactive_today = Client::where('active', 0)
+        ->whereDate('created_at', Carbon::now())
+        ->count();
+
         $debit = Invoice::where('type', 'pending')
         ->select(DB::raw('SUM(value) as total_invoices'))
+        ->whereYear('expiration', Carbon::now()->year)
         ->whereMonth('expiration', Carbon::now()->month)
         ->first();
 
         return response([
             'client_active' => $clients_active,
             'client_today' =>  $clients_today,
+            'client_deactive' => $clients_deactive,
+            'client_deactive_today' =>  $clients_deactive_today,
             'invoice_month' => $debit,
         ]);
     }
