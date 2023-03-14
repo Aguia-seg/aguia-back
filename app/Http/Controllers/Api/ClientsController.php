@@ -104,6 +104,14 @@ class ClientsController extends Controller
             // 'contracts' => $client->contracts
         );
     }
+    public function edit(string $id): Response
+    {
+        $client = Client::find($id);
+        return response(
+            $client,
+            // 'contracts' => $client->contracts
+        );
+    }
 
 
 
