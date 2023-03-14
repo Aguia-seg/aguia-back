@@ -120,7 +120,11 @@ class ClientsController extends Controller
      */
     public function update(Request $request, string $id): Response
     {
-        //
+        $client = Client::find($id)->update($request->all());
+
+        return response([
+            'message' => 'Cliente atualizado com sucesso'
+        ]);
     }
 
     /**

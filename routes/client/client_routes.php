@@ -8,3 +8,4 @@ Route::get('clients', [ClientsController::class, 'index']);
 Route::get('clients/{id}', [ClientsController::class, 'show']);
 Route::get('clients/edit/{id}', [ClientsController::class, 'edit']);
 Route::post('clients/search', [ClientsController::class, 'search']);
+Route::put('clients/{id}', [ClientsController::class, 'update']);
