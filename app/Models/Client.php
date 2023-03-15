@@ -27,11 +27,6 @@ class Client extends Model
         'veicle',
     ];
 
-
-    // public function getPhoneAttribute($value){
-    //     return Str::substrReplace($value, '(', 0) . Str::substrReplace($value, ')', 2) . Str::substrReplace($value, '-', 5, 0);
-         
-    // }
     
     public function contracts(): hasMany
     {
