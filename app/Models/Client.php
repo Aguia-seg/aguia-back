@@ -27,15 +27,11 @@ class Client extends Model
         'veicle',
     ];
 
-    // protected function phone(): Attribute
-    // {
-    //     return Attribute::get(fn ($value) => Str::substrReplace($value, '(', 1, 0));
-    // }
 
-    public function getPhoneAttribute($value){
-        return Str::substrReplace($value, '(', 0) . Str::substrReplace($value, ')', 2) . Str::substrReplace($value, '-', 5, 0);
+    // public function getPhoneAttribute($value){
+    //     return Str::substrReplace($value, '(', 0) . Str::substrReplace($value, ')', 2) . Str::substrReplace($value, '-', 5, 0);
          
-    }
+    // }
     
     public function contracts(): hasMany
     {
