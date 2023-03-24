@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Models\House;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\DB;
@@ -14,7 +15,10 @@ class HouseController extends Controller
      */
     public function index(): Response
     {
-        //
+        $houses = House::all();
+        return response(
+            $houses
+        );
     }
 
     /**
@@ -33,12 +37,20 @@ class HouseController extends Controller
         
     }
 
-    public function showDistinct(): Response
+    public function showDistinctDistrict(): Response
     {
         $district = DB::table('houses')->distinct()->get(['district']);
 
         return response(
-            $houses
+            $district
+        );
+    }
+    public function showDistinctStreet(): Response
+    {
+        $street = DB::table('houses')->distinct()->get(['street']);
+
+        return response(
+            $street
         );
     }
 
