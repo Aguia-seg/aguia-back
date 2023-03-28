@@ -45,10 +45,11 @@ class HouseController extends Controller
             $district
         );
     }
-    public function showDistinctStreet(): Response
+    public function showDistinctStreet(string $districts): Response
     {
-        $street = DB::table('houses')->distinct()->get(['street']);
-
+       
+        $street = DB::table('houses')->where('district', '=', $districts)->distinct()->get('street');
+        
         return response(
             $street
         );
