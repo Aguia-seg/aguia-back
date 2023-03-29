@@ -9,6 +9,7 @@ use Illuminate\Http\Response;
 use App\Models\Client;
 use App\Models\Contract;
 use App\Models\Invoice;
+use App\Models\House;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Validator;
 
@@ -33,7 +34,28 @@ class ClientsController extends Controller
     {
         $validator = $request->validated();
 
-        $client = Client::create($request->all());
+        $client = Client::create([
+            'name' => $request->name,
+            'type' => $request->type,
+            'cpf_cnpj' => $request->cpf_cnpj,
+            'active' => $request->active,
+            'phone' => $request->phone,
+            'email' => $request->email
+
+        ]);
+
+        if($client)
+        {
+            $house = House::create([
+                'client_id' => $client->id,
+                'city' => $request->city,
+                'type' => $request->complement,
+                'cep' => $request->cep,
+                'street' => $request->street,
+                'district' => $request->district,
+                'number' => $request->number
+            ]);
+        }
 
         if ($client) {
             $contract = Contract::create([

@@ -19,12 +19,12 @@ return new class extends Migration
             $table->boolean('active');
             $table->string('phone');
             $table->string('email');
-            $table->string('cep');
-            $table->string('city');
-            $table->string('district');
-            $table->string('street');
-            $table->string('complement');
-            $table->string('number');
+            $table->string('cep')->nullable();
+            $table->string('city')->nullable();
+            $table->string('district')->nullable();
+            $table->string('street')->nullable();
+            $table->string('complement')->nullable();
+            $table->string('number')->nullable();
             $table->text('veicle')->nullable();
             $table->timestamps();
         });

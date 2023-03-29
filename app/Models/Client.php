@@ -26,7 +26,11 @@ class Client extends Model
         'number',
         'veicle',
     ];
-
+    
+    public function houses(): hasMany
+    {
+        return $this->hasMany(House::class);
+    }
     
     public function contracts(): hasMany
     {
