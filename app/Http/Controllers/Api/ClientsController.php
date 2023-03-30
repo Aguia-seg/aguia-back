@@ -40,7 +40,8 @@ class ClientsController extends Controller
             'cpf_cnpj' => $request->cpf_cnpj,
             'active' => $request->active,
             'phone' => $request->phone,
-            'email' => $request->email
+            'email' => $request->email,
+            'veicle' => $request->veicle
 
         ]);
 
@@ -120,9 +121,11 @@ class ClientsController extends Controller
      */
     public function show(string $id): Response
     {
-        $client = Client::getContract()->where('id', $id)->first();
+        $client = Client::getContract()->where('id', $id)->first() ;
+        
         return response(
-            $client,
+            $client
+            
             // 'contracts' => $client->contracts
         );
     }

@@ -22,6 +22,6 @@ class House extends Model
 
     public function clients(): BelongsTo
     {
-        return $this->belongsTo(Client::class, 'foreign_key');
+        return $this->belongsTo(Client::class);
     }
 }
