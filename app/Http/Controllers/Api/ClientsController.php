@@ -41,7 +41,6 @@ class ClientsController extends Controller
             'active' => $request->active,
             'phone' => $request->phone,
             'email' => $request->email,
-            'veicle' => $request->veicle
 
         ]);
 
@@ -54,7 +53,8 @@ class ClientsController extends Controller
                 'cep' => $request->cep,
                 'street' => $request->street,
                 'district' => $request->district,
-                'number' => $request->number
+                'number' => $request->number,
+                'veicle' => $request->veicle
             ]);
         }
 
