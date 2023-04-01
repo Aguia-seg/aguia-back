@@ -18,13 +18,6 @@ class Client extends Model
         'active',
         'phone',
         'email',
-        'cep',
-        'city',
-        'district',
-        'street',
-        'complement',
-        'number',
-        'veicle',
     ];
     
     public function houses(): hasMany

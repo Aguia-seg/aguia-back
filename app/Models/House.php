@@ -17,11 +17,12 @@ class House extends Model
         'street',
         'district',
         'number',
+        'veicle',
 
     ];
 
     public function clients(): BelongsTo
     {
-        return $this->belongsTo(Client::class);
+        return $this->belongsTo(Client::class, 'client_id');
     }
 }

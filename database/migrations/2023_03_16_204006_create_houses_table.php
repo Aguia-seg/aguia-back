@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('street');
             $table->string('district');
             $table->integer('number');
+            $table->text('veicle')->nullable();
 
             $table->timestamps();
         });
