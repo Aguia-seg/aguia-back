@@ -31,7 +31,7 @@ class HouseController extends Controller
         
         return response(
            [
-            'testes' => $request
+            'testes' => $houses
            ]
         );
     }
