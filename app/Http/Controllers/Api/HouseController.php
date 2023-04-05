@@ -24,15 +24,13 @@ class HouseController extends Controller
     public function filter(Request $request): Response
     {
        
-        $houses = House::where('city', 'LIKE', "%$request->city%")
+        $houses = House::join('clients', 'houses.id', '=', 'clients.id')->where('city', 'LIKE', "%$request->city%")
         ->where('district', 'LIKE', "%$request->district%")
         ->where('street', 'LIKE', "%$request->street%")
         ->get();
         
         return response(
-           [
-            'testes' => $houses
-           ]
+           $houses
         );
     }
 
