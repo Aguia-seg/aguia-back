@@ -123,50 +123,51 @@ class ClientsController extends Controller
     {
         $client = Client::getContract()->where('id', $id)->first();
         
-        // if($client){
-        //     $dateDay = $client->created_at->format('d');
-        //     if($client->created_at->format('F') == 'January'){
-        //         $dateMonth = 'Janeiro';
-        //     }
-        //     else if($client->created_at->format('F') == 'February'){
-        //         $dateMonth = 'Fevereiro';
-        //     }
-        //     else if($client->created_at->format('F') == 'March'){
-        //         $dateMonth = 'Março';
-        //     }
-        //     else if($client->created_at->format('F') == 'April'){
-        //         $dateMonth = 'Abril';
-        //     }
-        //     else if($client->created_at->format('F') == 'May'){
-        //         $dateMonth = 'Maio';
-        //     }
-        //     else if($client->created_at->format('F') == 'June'){
-        //         $dateMonth = 'Junho';
-        //     }   
-        //     else if($client->created_at->format('F') == 'July'){
-        //         $dateMonth = 'Julho';
-        //     }
-        //     else if($client->created_at->format('F') == 'August'){
-        //         $dateMonth = 'Agosto';
-        //     }
-        //     else if($client->created_at->format('F') == 'September'){
-        //         $dateMonth = 'Setembro';
-        //     }
-        //     else if($client->created_at->format('F') == 'October'){
-        //         $dateMonth = 'Outubro';
-        //     }
-        //     else if($client->created_at->format('F') == 'November'){
-        //         $dateMonth = 'Novembro';
-        //     }
-        //     else if($client->created_at->format('F') == 'December'){
-        //         $dateMonth = 'Dezembro';
-        //     }
-        // }
+        if($client){
+            $dateDay = $client->created_at->format('d');
+            if($client->created_at->format('F') == 'January'){
+                $dateMonth = 'Janeiro';
+            }
+            else if($client->created_at->format('F') == 'February'){
+                $dateMonth = 'Fevereiro';
+            }
+            else if($client->created_at->format('F') == 'March'){
+                $dateMonth = 'Março';
+            }
+            else if($client->created_at->format('F') == 'April'){
+                $dateMonth = 'Abril';
+            }
+            else if($client->created_at->format('F') == 'May'){
+                $dateMonth = 'Maio';
+            }
+            else if($client->created_at->format('F') == 'June'){
+                $dateMonth = 'Junho';
+            }   
+            else if($client->created_at->format('F') == 'July'){
+                $dateMonth = 'Julho';
+            }
+            else if($client->created_at->format('F') == 'August'){
+                $dateMonth = 'Agosto';
+            }
+            else if($client->created_at->format('F') == 'September'){
+                $dateMonth = 'Setembro';
+            }
+            else if($client->created_at->format('F') == 'October'){
+                $dateMonth = 'Outubro';
+            }
+            else if($client->created_at->format('F') == 'November'){
+                $dateMonth = 'Novembro';
+            }
+            else if($client->created_at->format('F') == 'December'){
+                $dateMonth = 'Dezembro';
+            }
+        }
         
-        return response(
-           $client
-            // 'contracts' => $client->contracts
-        );
+        return response([
+            'client' => $client,
+            'dateDay' => $dateDay,
+            'dateMonth' => $dateMonth
+        ]);
     }
     public function edit(string $id): Response
     {
@@ -196,7 +197,11 @@ class ClientsController extends Controller
      */
     public function destroy(string $id): Response
     {
-        //
+        $client = Client::where('id', $id)->delete();
+
+        return response([
+            'message' => 'Dado movido para a lixeira com sucesso'
+        ]);
     }
 
     public function search(Request $request): Response
