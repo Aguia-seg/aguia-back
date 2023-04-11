@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('contracts', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('client_id')->constrained();
+            $table->foreignId('client_id')->constrained('clients')->cascadeOnDelete();
             $table->foreignId('plan_id')->constrained();
             $table->date('expiration');
             $table->integer('payday');

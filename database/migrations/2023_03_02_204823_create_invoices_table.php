@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('invoices', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('client_id')->constrained();
-            $table->foreignId('contract_id')->constrained();
+            $table->foreignId('client_id')->constrained('clients')->cascadeOnDelete();
+            $table->foreignId('contract_id')->constrained('contracts')->cascadeOnDelete();
             $table->date('expiration');
             $table->float('value');
             $table->integer('days')->default(30);

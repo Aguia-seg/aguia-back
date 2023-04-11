@@ -119,7 +119,24 @@ class ClientsController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id): Response
+    public function trashedOnly(): Response
+    {
+        $client = Client::onlyTrashed()->get();
+
+        return response(
+            $client
+        );
+    }
+    public function restoreTrashed(string $id): Response
+    {
+        $client = Client::where('id', $id)->restore();
+
+        return response([
+            'message' => 'Cliente restaurado com sucesso'
+        ]);
+    }
+    
+     public function show(string $id): Response
     {
         $client = Client::getContract()->where('id', $id)->first();
         
@@ -169,6 +186,7 @@ class ClientsController extends Controller
             'dateMonth' => $dateMonth
         ]);
     }
+
     public function edit(string $id): Response
     {
         $client = Client::find($id);
@@ -204,6 +222,15 @@ class ClientsController extends Controller
         ]);
     }
 
+    public function forceDestroy(string $id): Response
+    {
+        $client = Client::where('id', $id)->ForceDelete();
+
+        return response([
+            'message' => 'Dado Deletado com sucesso'
+        ]);
+    }
+    
     public function search(Request $request): Response
     {
         $client = Client::where('name', 'LIKE', "%{$request->search}%")
