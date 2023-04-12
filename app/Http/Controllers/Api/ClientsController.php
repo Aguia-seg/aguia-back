@@ -129,10 +129,15 @@ class ClientsController extends Controller
     }
     public function restoreTrashed(string $id): Response
     {
+        
         $client = Client::where('id', $id)->restore();
+        $clientActive = Client::where('id', $id)->update([
+            'active' => 1
+        ]);
 
         return response([
-            'message' => 'Cliente restaurado com sucesso'
+            'message' => 'Cliente restaurado com sucesso',
+            'dado' => $clientActive
         ]);
     }
     
@@ -215,10 +220,15 @@ class ClientsController extends Controller
      */
     public function destroy(string $id): Response
     {
+        $clientActive = Client::where('id', $id)->update([
+            'active' => 0
+        ]);
+        
         $client = Client::where('id', $id)->delete();
 
         return response([
-            'message' => 'Dado movido para a lixeira com sucesso'
+            'message' => 'Dado movido para a lixeira com sucesso',
+           
         ]);
     }
 

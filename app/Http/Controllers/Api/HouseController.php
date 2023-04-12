@@ -15,7 +15,7 @@ class HouseController extends Controller
      */
     public function index(): Response
     {
-        $houses = DB::table('houses')->join('clients', 'houses.id', '=', 'clients.id')->select('houses.*', 'clients.name')->get();
+        $houses = DB::table('houses')->join('clients', 'houses.id', '=', 'clients.id')->select('houses.*', 'clients.name', 'clients.active')->get();
         return response(
             $houses
         );

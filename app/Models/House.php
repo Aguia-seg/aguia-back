@@ -21,6 +21,11 @@ class House extends Model
 
     ];
 
+    public function badgets(): BelongsTo
+    {
+        return $this->belongsTo(Badget::class, 'badget_id');
+    }
+
     public function clients(): BelongsTo
     {
         return $this->belongsTo(Client::class, 'client_id');
