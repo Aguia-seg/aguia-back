@@ -5,5 +5,6 @@ use App\Http\Controllers\Api\HouseController;
 
 Route::get('houses', [HouseController::class, 'index']);
 Route::post('houses/filtered', [HouseController::class, 'filter']);
+Route::post('houses', [HouseController::class, 'store']);
 Route::get('houses/district', [HouseController::class, 'showDistinctDistrict']);
 Route::get('houses/street/{district}', [HouseController::class, 'showDistinctStreet']);

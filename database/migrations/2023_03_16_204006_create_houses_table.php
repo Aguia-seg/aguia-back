@@ -13,14 +13,14 @@ return new class extends Migration
     {
         Schema::create('houses', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('client_id')->constrained('clients')->nullable()->cascadeOnDelete();
-            $table->foreignId('badget_id')->constrained('badgets');
+            $table->foreignId('client_id')->nullable()->constrained('clients')->cascadeOnDelete();
+            $table->foreignId('badget_id')->default('5')->constrained('badgets');
             $table->string('city');
             $table->string('type');
             $table->string('cep');
             $table->string('street');
             $table->string('district');
-            $table->integer('number');
+            $table->integer('number')->unique();
             $table->text('veicle')->nullable();
 
             $table->timestamps();

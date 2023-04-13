@@ -15,9 +15,14 @@ class HouseController extends Controller
      */
     public function index(): Response
     {
-        $houses = DB::table('houses')->join('clients', 'houses.id', '=', 'clients.id')->select('houses.*', 'clients.name', 'clients.active')->get();
+        // $housesWithClient = DB::table('houses')->join('clients', 'houses.id', '=', 'clients.id')->select('houses.*', 'clients.name', 'clients.active')->get();
+        $housesAll = House::withClients()->get();
+        //$housesMerged = (object) array_combine($housesWithClient,  $housesAll);        
+        //$housesMerged = $housesWithClient->merge($housesAll);
+       // $houses = $housesMerged->all();
+
         return response(
-            $houses
+            $housesAll
         );
     }
 
@@ -39,7 +44,19 @@ class HouseController extends Controller
      */
     public function store(Request $request): Response
     {
-        //
+        $houses = House::create([
+            'cep' => $request->cep,
+            'city' => $request->city,
+            'district' => $request->district,
+            'street' => $request->street,
+            'type' => $request->type,
+            'number' => $request->number,
+            'veicle' => $request->veicle
+        ]);
+
+        return response([
+            'message' => 'Residência cadastrada com sucesso'
+        ]);
     }
 
     /**

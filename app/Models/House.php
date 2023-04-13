@@ -30,4 +30,12 @@ class House extends Model
     {
         return $this->belongsTo(Client::class, 'client_id');
     }
+
+    function scopeWithClients($query) 
+    {
+        return $query->with([
+            'clients'
+
+        ]);
+    }
 }
