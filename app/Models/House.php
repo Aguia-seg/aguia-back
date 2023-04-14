@@ -12,6 +12,7 @@ class House extends Model
     protected $fillable = [
         'city',
         'client_id',
+        'badget_id',
         'type',
         'cep',
         'street',
@@ -34,7 +35,8 @@ class House extends Model
     function scopeWithClients($query) 
     {
         return $query->with([
-            'clients'
+            'clients',
+            'badgets'
 
         ]);
     }

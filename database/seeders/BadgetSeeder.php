@@ -27,7 +27,7 @@ class BadgetSeeder extends Seeder
         ]);
         DB::table('badgets')->insert([
             'color' => 'Verde',
-            'description' => 'Contratada'
+            'description' => 'Em contrato'
         ]);
         DB::table('badgets')->insert([
             'color' => 'Branco',

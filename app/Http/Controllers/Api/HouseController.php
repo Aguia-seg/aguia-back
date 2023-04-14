@@ -29,7 +29,7 @@ class HouseController extends Controller
     public function filter(Request $request): Response
     {
        
-        $houses = House::join('clients', 'houses.id', '=', 'clients.id')->where('city', 'LIKE', "%$request->city%")
+        $houses = House::withClients()->where('city', 'LIKE', "%$request->city%")
         ->where('district', 'LIKE', "%$request->district%")
         ->where('street', 'LIKE', "%$request->street%")
         ->get();
@@ -44,6 +44,7 @@ class HouseController extends Controller
      */
     public function store(Request $request): Response
     {
+        
         $houses = House::create([
             'cep' => $request->cep,
             'city' => $request->city,
@@ -51,8 +52,11 @@ class HouseController extends Controller
             'street' => $request->street,
             'type' => $request->type,
             'number' => $request->number,
-            'veicle' => $request->veicle
+            'veicle' => $request->veicle,
+            'badget_id' => $request->situation
         ]);
+
+        
 
         return response([
             'message' => 'Residência cadastrada com sucesso'
@@ -64,7 +68,11 @@ class HouseController extends Controller
      */
     public function show(string $id): Response
     {
+        $houses = House::withClients()->where('id', $id)->get();
         
+        return response(
+            $houses
+        );
     }
 
     public function showDistinctDistrict(): Response
@@ -88,9 +96,16 @@ class HouseController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id): Response
+    public function updateBadget(Request $request, string $id): Response
     {
-        //
+        $houses = House::find($id)->update([
+            'badget_id' => $request->situation
+        ]);
+
+        return response([
+            'message' => 'Dado atualizado com sucesso',
+            
+        ]);
     }
 
     /**

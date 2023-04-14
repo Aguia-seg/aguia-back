@@ -54,7 +54,8 @@ class ClientsController extends Controller
                 'street' => $request->street,
                 'district' => $request->district,
                 'number' => $request->number,
-                'veicle' => $request->veicle
+                'veicle' => $request->veicle,
+                'badget_id' => 4
             ]);
         }
 
