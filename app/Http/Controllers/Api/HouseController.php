@@ -96,7 +96,7 @@ class HouseController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function updateBadget(Request $request, string $id): Response
+    public function update(Request $request, string $id): Response
     {
         $houses = House::find($id)->update([
             'badget_id' => $request->situation
