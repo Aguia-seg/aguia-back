@@ -75,9 +75,9 @@ class HouseController extends Controller
         );
     }
 
-    public function showDistinctDistrict(): Response
+    public function showDistinctDistrict($city): Response
     {
-        $district = DB::table('houses')->distinct()->get(['district']);
+        $district = DB::table('houses')->where('city', '=', $city)->distinct()->get(['district']);
 
         return response(
             $district
