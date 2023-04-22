@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('name');
             $table->string('email')->unique();
             $table->string('cpf')->unique();
-            $table->enum('type', ['admin', 'seller', 'collector' ])->nullable();
+            $table->enum('type', ['admin', 'seller', 'collector', 'reception'])->nullable();
             $table->string('whatsapp');
             $table->string('password');
             $table->timestamps();

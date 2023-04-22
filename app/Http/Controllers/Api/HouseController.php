@@ -99,7 +99,7 @@ class HouseController extends Controller
     public function update(Request $request, string $id): Response
     {
         $houses = House::find($id)->update([
-            'badget_id' => $request->situation
+            'badget_id' => $request->badget_id
         ]);
 
         return response([
