@@ -14,7 +14,11 @@ class InvoiceController extends Controller
      */
     public function index(): Response
     {
-        //
+        $invoice = Invoice::all();
+
+        return response(
+            $invoice
+        );
     }
 
     /**
@@ -35,6 +39,17 @@ class InvoiceController extends Controller
         return response(
             $invoice
         );
+    }
+
+    public function pay(string $id): Response
+    {
+        $invoice = Invoice::where('id', $id)->update([
+            'type' => 'payed'
+        ]);
+
+        return response([
+            'message' => 'Pendência paga com sucesso'
+        ]);
     }
 
     /**
