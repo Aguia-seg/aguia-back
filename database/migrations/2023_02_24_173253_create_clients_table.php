@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('cpf_cnpj')->unique();
             $table->boolean('active');
             $table->string('phone');
-            $table->string('email');
+            $table->string('email')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });
