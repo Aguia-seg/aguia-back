@@ -22,6 +22,7 @@ return new class extends Migration
             $table->string('district');
             $table->integer('number');
             $table->text('veicle')->nullable();
+            $table->string('veicle_plate')->nullable();
 
             $table->timestamps();
         });

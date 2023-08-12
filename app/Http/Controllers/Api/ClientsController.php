@@ -40,6 +40,7 @@ class ClientsController extends Controller
             'cpf_cnpj' => $request->cpf_cnpj,
             'active' => $request->active,
             'phone' => $request->phone,
+            'cellphone' => $request->cellphone,
             'email' => $request->email,
 
         ]);
@@ -55,6 +56,7 @@ class ClientsController extends Controller
                 'district' => $request->district,
                 'number' => $request->number,
                 'veicle' => $request->veicle,
+                'veicle_plate' => $request->veicle_plate,
                 'badget_id' => 4
             ]);
         }

@@ -23,9 +23,9 @@ class PainelController extends Controller
         ->whereDate('created_at', Carbon::now())
         ->count();
 
-        $clients_deactive = Client::where('active', 0)->count();
+        $clients_deactive = Client::onlyTrashed()->where('active', 0)->count();
 
-        $clients_deactive_today = Client::where('active', 0)
+        $clients_deactive_today = Client::onlyTrashed()->where('active', 0)
         ->whereDate('created_at', Carbon::now())
         ->count();
 
