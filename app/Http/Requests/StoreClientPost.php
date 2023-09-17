@@ -25,6 +25,7 @@ class StoreClientPost extends FormRequest
     {
         return [
             'email' => 'unique:clients',
+            'cpf_cnpj' => 'unique:clients',
         ];
     }
 

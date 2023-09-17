@@ -21,6 +21,7 @@ class Client extends Model
         'type',
         'cpf_cnpj',
         'active',
+        'cellphone',
         'phone',
         'email',
         
@@ -46,7 +47,7 @@ class Client extends Model
         return $query->with([
             'contracts.plan', 
             'contracts.invoices',
-            'houses'
+            'houses.badgets'
 
         ]);
     }

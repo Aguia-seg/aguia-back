@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('badgets', function (Blueprint $table) {
             $table->id();
-            $table->enum('color', ['Vermelho', 'Azul', 'Amarelo', 'Verde', 'Branco', 'Branco com vermelho']);
+            $table->enum('color', ['Vermelho', 'Azul', 'Amarelo', 'Verde', 'Branco', 'Branco com vermelho','Cinza']);
             $table->string('description');
             $table->timestamps();
         });

@@ -53,7 +53,8 @@ class HouseController extends Controller
             'type' => $request->type,
             'number' => $request->number,
             'veicle' => $request->veicle,
-            'badget_id' => $request->situation
+            'badget_id' => $request->situation,
+            'client_id' => $request->client_id
         ]);
 
         

@@ -37,5 +37,9 @@ class BadgetSeeder extends Seeder
             'color' => 'Branco com vermelho',
             'description' => 'Desabitado'
         ]);
+        DB::table('badgets')->insert([
+            'color' => 'Cinza',
+            'description' => 'Em contato'
+        ]);
     }
 }
