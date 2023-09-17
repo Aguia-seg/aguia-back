@@ -20,7 +20,7 @@ return new class extends Migration
             $table->string('cep');
             $table->string('street');
             $table->string('district');
-            $table->integer('number');
+            $table->string('number');
             $table->text('veicle')->nullable();
             $table->string('veicle_plate')->nullable();
 

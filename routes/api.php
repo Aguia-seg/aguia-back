@@ -24,4 +24,5 @@ require __DIR__.'/client/client_routes.php';
 require __DIR__.'/plan/plan_routes.php';
 require __DIR__.'/painel/painel_routes.php';
 require __DIR__.'/house/house_routes.php';
+require __DIR__.'/contract/contract_routes.php';
 
