@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Carbon;
-use App\Models\{Contract, Invoice};
+use App\Models\{Contract, House, Invoice};
 
 class ContractController extends Controller
 {
@@ -26,6 +26,7 @@ class ContractController extends Controller
         $contract = Contract::create([
             'client_id' => $request->client_id,
             'plan_id' => $request->plano['id'],
+            'house_id' => $request->house_id,
             'expiration' => Carbon::create(Carbon::now()->year, Carbon::now()->month, $request->payday)->addYear(1),
             // 'expiration' => Carbon::create(2023,12, $request->payday)->addMonth( 12-Carbon::now()->month),
             'payday' => $request->payday,
@@ -33,6 +34,9 @@ class ContractController extends Controller
         ]);
 
         if ($contract) {
+            $houseUpdate = House::find($request->house_id);
+            $houseUpdate->badget_id = 4;
+            $houseUpdate->save();
 
             // $data_atual = Carbon::create(2023, 12, 01);
             $data_atual = Carbon::now();
